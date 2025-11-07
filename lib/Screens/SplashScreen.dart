@@ -19,7 +19,7 @@ class _MainSplashScreenState extends State<MainSplashScreen> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  OnboardingScreen()),
+          MaterialPageRoute(builder: (context) => OnboardingScreen()),
         );
       }
     });

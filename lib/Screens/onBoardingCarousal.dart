@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:maroq_ecommerce_apparels/Screens/AuthScreens/SignInScreen.dart';
 
 class OnboardingCarousel extends StatefulWidget {
-  const OnboardingCarousel({super.key});
+  OnboardingCarousel({super.key});
 
   @override
   State<OnboardingCarousel> createState() => _OnboardingCarouselState();
@@ -36,12 +37,9 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
 
   void _nextPage() {
     if (_currentPage < _pages.length - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
-      );
+      _pageController.nextPage(duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
     } else {
-      // Navigate to main screen
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInScreen()));
     }
   }
 
@@ -61,13 +59,16 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
               right: 20,
               child: GestureDetector(
                 onTap: () {
-                  // Skip to main screen
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInScreen()),
+                  );
                 },
                 child: Text(
                   "Skip",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
-                    color: const Color(0xFF715137),
+                    color: Color(0xFF715137),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -78,7 +79,7 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
             PageView.builder(
               controller: _pageController,
               itemCount: _pages.length,
-              physics: const NeverScrollableScrollPhysics(), // 👈 disables finger swipe
+              physics: NeverScrollableScrollPhysics(), // 👈 disables finger swipe
               onPageChanged: (index) {
                 setState(() => _currentPage = index);
               },
@@ -88,7 +89,7 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 60),
+                    SizedBox(height: 60),
 
                     // Image mockup - slightly smaller now
                     Expanded(
@@ -114,8 +115,8 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
               child: Container(
                 height: size.height * 0.30,
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
-                decoration: const BoxDecoration(
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                   boxShadow: [
@@ -127,7 +128,7 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
                   children: [
                     /// --- Text (animated)
                     AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 400),
+                      duration: Duration(milliseconds: 400),
                       transitionBuilder: (child, animation) =>
                           FadeTransition(opacity: animation, child: child),
                       child: Column(
@@ -146,13 +147,13 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
                               children: [
                                 TextSpan(
                                   text: _pages[_currentPage]["highlight"],
-                                  style: const TextStyle(color: Color(0xFF715137)),
+                                  style: TextStyle(color: Color(0xFF715137)),
                                 ),
                                 TextSpan(text: _pages[_currentPage]["title"]),
                               ],
                             ),
                           ),
-                          const SizedBox(height: 12),
+                          SizedBox(height: 12),
                           // Subtitle
                           Text(
                             _pages[_currentPage]["subtitle"],
@@ -175,13 +176,13 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(_pages.length, (dotIndex) {
                             return AnimatedContainer(
-                              duration: const Duration(milliseconds: 300),
-                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              duration: Duration(milliseconds: 300),
+                              margin: EdgeInsets.symmetric(horizontal: 4),
                               height: 8,
                               width: 8,
                               decoration: BoxDecoration(
                                 color: _currentPage == dotIndex
-                                    ? const Color(0xFF715137)
+                                    ? Color(0xFF715137)
                                     : Colors.grey[300],
                                 shape: BoxShape.circle,
                               ),
@@ -194,11 +195,11 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
                           child: Container(
                             width: 46,
                             height: 46,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0xFF715137),
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(
+                            child: Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
                               size: 18,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:maroq_ecommerce_apparels/CommonWidgets/CustomButton.dart';
 import 'package:maroq_ecommerce_apparels/CommonWidgets/cornerCircles.dart';
+import 'package:maroq_ecommerce_apparels/Screens/AuthScreens/SignInScreen.dart';
 import 'package:maroq_ecommerce_apparels/Screens/onBoardingCarousal.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -109,7 +110,10 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Navigate to Sign In
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignInScreen()),
+                          );
                         },
                         child: Text(
                           "Sign In",
