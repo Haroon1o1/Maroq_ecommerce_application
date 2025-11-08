@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -14,6 +15,7 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsets? margin;
   final Color? fillColor;
   final Color? borderColor;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField({
     Key? key,
@@ -29,6 +31,7 @@ class CustomTextField extends StatefulWidget {
     this.margin,
     this.fillColor,
     this.borderColor,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -78,29 +81,22 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
             ),
           TextField(
+            inputFormatters: widget.inputFormatters,
             controller: widget.controller,
             focusNode: _focusNode,
             keyboardType: widget.keyboardType,
             textInputAction: widget.inputType,
             obscureText: widget.isPassword ? _obscureText : false,
             onChanged: widget.onChanged,
-            style: GoogleFonts.poppins(
-              fontSize: 14,
-              height: 1.3,
-              color: Colors.black87,
-            ),
+            style: GoogleFonts.poppins(fontSize: 14, height: 1.3, color: Colors.black87),
             cursorColor: brown,
             decoration: InputDecoration(
               hintText: widget.hintText,
-              hintStyle: GoogleFonts.poppins(
-                color: Colors.grey.shade500,
-                fontSize: 14,
-              ),
+              hintStyle: GoogleFonts.poppins(color: Colors.grey.shade500, fontSize: 14),
               filled: true,
               fillColor: fill,
               isDense: true,
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+              contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
               prefixIcon: widget.prefix,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
@@ -110,7 +106,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide(color: brown, width: 1.3),
               ),
-              suffixIcon: widget.suffix ??
+              suffixIcon:
+                  widget.suffix ??
                   (widget.isPassword
                       ? IconButton(
                           icon: Icon(
@@ -118,11 +115,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 ? Icons.visibility_off_outlined
                                 : Icons.visibility_outlined,
                             size: 20,
-                            color:
-                                _isFocused ? brown : Colors.grey.shade600,
+                            color: _isFocused ? brown : Colors.grey.shade600,
                           ),
-                          onPressed: () =>
-                              setState(() => _obscureText = !_obscureText),
+                          onPressed: () => setState(() => _obscureText = !_obscureText),
                         )
                       : null),
             ),

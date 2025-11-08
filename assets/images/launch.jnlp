@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="https://trade.akdtrade.biz//TradeCast/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>AKD-Trade Cast v4.31</title>
+        <vendor>CATALYST IT Solutions (Pvt.) Limited.</vendor>
+        <homepage href=""/>
+        <description>Trade Cast (Next Generation)</description>
+
+
+    <icon href="icon.ico" kind="shortcut"/>
+	   <shortcut online="true">
+            <desktop/> 
+        </shortcut>
+        <update check="always" policy="prompt-update"/>
+<offline-allowed/>
+
+</information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+<j2se version="1.6+"/>
+<jar eager="true" href="launch.jar" main="true"/>
+<property name="https.protocols" value="TLSv1.1"/>
+</resources>
+
+    <application-desc main-class="launch.Main">
+	 <argument>JNLPURL#https://trade.akdtrade.biz//TradeCast/TC.jnlp</argument>
+	 <argument>UNINSTALLURL#</argument>
+	 <argument>HouseName#AKD</argument>
+    </application-desc>
+
+</jnlp>

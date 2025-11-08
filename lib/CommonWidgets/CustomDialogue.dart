@@ -54,9 +54,10 @@ class CustomDialog extends StatelessWidget {
                           alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF715137), Color.fromARGB(255, 138, 93, 57)],
-                            ),
+                            color: Colors.green,
+                            // gradient: const LinearGradient(
+                            //   colors: [Color(0xFF715137), Color.fromARGB(255, 138, 93, 57)],
+                            // ),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
@@ -75,7 +76,7 @@ class CustomDialog extends StatelessWidget {
                           alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Colors.red,
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(

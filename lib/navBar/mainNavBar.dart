@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maroq_ecommerce_apparels/Screens/HomeScreen/HomeScreen.dart';
-import 'package:maroq_ecommerce_apparels/Screens/ProfileScreen/ProfileScreen.dart';
+import 'package:maroq_ecommerce_apparels/Screens/SettingsScreens/settings.dart';
 import 'package:maroq_ecommerce_apparels/Screens/allProductsScreen/allProducts.dart';
 import 'package:maroq_ecommerce_apparels/Screens/chatScreens/chatList.dart';
 import 'package:maroq_ecommerce_apparels/utils/ExitHandler.dart';
